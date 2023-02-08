@@ -33,10 +33,8 @@ class AdvertisementSerializer(ModelSerializer):
 
     def validate(self, data):
         """Метод для валидации. Вызывается при создании и обновлении."""
-        try:
-            if dict(data)['status'] == 'CLOSED':
-                return data
-        except:
+
+        if data.get('status') == 'OPEN':
             return data
 
         if data:
